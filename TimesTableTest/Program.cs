@@ -53,6 +53,9 @@ namespace TimesTableTest
                 int QuestionsToAsk = 10;
                 int Points = 0;
                 // For loop to ask the user questions
+                // Also starts a timer
+                var Timer = new System.Diagnostics.Stopwatch();
+                Timer.Start();
                 for (int attempt = 1; attempt <= QuestionsToAsk; attempt++)
                 {
                     int thisQ = RNG.Next(1, 13);
@@ -79,18 +82,21 @@ namespace TimesTableTest
                         Points++;
                     }
                 }
+                Timer.Stop();
+                TimeSpan TimeTaken = Timer.Elapsed;
+                // Stops the timer
                 // Prints a little message to tell the user how well they have done in the test
                 if ((Convert.ToDouble(Points) / Convert.ToDouble(QuestionsToAsk)) > 0.7)
                 {
-                    Console.WriteLine($"You scored {Points}/{QuestionsToAsk}. Great job!");
+                    Console.WriteLine($"You scored {Points}/{QuestionsToAsk}. in {Math.Round(TimeTaken.TotalSeconds, 1)} seconds. Great job!");
                 }
                 else if ((Convert.ToDouble(Points) / Convert.ToDouble(QuestionsToAsk)) > 0.3)
                 {
-                    Console.WriteLine($"You scored {Points}/{QuestionsToAsk}. Not bad!");
+                    Console.WriteLine($"You scored {Points}/{QuestionsToAsk}. in {Math.Round(TimeTaken.TotalSeconds, 1)} seconds. Not bad!");
                 }
                 else
                 {
-                    Console.WriteLine($"You scored {Points}/{QuestionsToAsk}. Maybe you need a little more practice.");
+                    Console.WriteLine($"You scored {Points}/{QuestionsToAsk} in {Math.Round(TimeTaken.TotalSeconds, 1)} seconds. Maybe you need a little more practice.");
                 }
                 // Asks the user if they would like to play again and then makes sure the answer is either "yes" or "no" and acting accordingly (changing the ToPlayAgain variable
                 // initiated at the start of the program
@@ -114,8 +120,6 @@ namespace TimesTableTest
                         Console.WriteLine("Please enter yes or no.");
                     }
                 } while (!PlayAgainValid);
-
-
             }
         }
     }
