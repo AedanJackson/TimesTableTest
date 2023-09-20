@@ -46,7 +46,7 @@ namespace TimesTableTest
                 Console.WriteLine($"Woohoo! You have chosen to do the\n{NumberSelection} times tables. 10 questions coming up!");
                 int QuestionsToAsk = 10;
                 int points = 0;
-                for (int attempt = 0; attempt <= QuestionsToAsk; attempt++)
+                for (int attempt = 0; attempt <= QuestionsToAsk; attempt++) 
                 {
 
                 }
